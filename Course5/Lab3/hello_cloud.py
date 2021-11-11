@@ -36,10 +36,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(b'Hello Cloud')
         # Now get the hostname and IP and print that as well.
         hostname = socket.gethostname()
+        fqd_name= socket.getfqdn()
         host_ip = socket.gethostbyname(hostname)
         self.wfile.write(
-            '\n\nHostname: {} \nIP Address: {}'.format(
-                hostname, host_ip).encode())
+            '\n\nHostname: {} \nIP Address: {}\n FQDN: {}'.format(
+                hostname, host_ip,fqd_name).encode())
 
 
 def main(argv):
